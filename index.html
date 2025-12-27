@@ -3,692 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PornWorship.com - Launching January 1st</title>
+    <title>The #1 Gooning Platform</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        :root {
-            --pink: #ff6ec7;
-            --blue: #00d4ff;
-            --light-pink: #ffb3e6;
-            --light-blue: #a8e6ff;
-            --dark: #0a0a12;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-            background: linear-gradient(180deg, #0a0a12 0%, #1a0a1f 50%, #0a1520 100%);
-            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            min-height: 100vh;
         }
 
-        /* Cotton candy gradient background */
-        body::before {
-            content: '';
+        .gradient-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(ellipse at top left, rgba(255, 110, 199, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at top right, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom left, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(255, 110, 199, 0.12) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
+             background: radial-gradient(ellipse at 20% 30%, rgba(58, 134, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 70%, rgba(255, 105, 180, 0.15) 0%, transparent 50%);
+               z-index: 0;
         }
 
-        /* Floating particles */
-        .particles {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: linear-gradient(135deg, var(--pink), var(--blue));
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: particleFloat 15s ease-in-out infinite;
-        }
-
-        @keyframes particleFloat {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-            50% { transform: translateY(-100px) translateX(50px); opacity: 0.6; }
-        }
-
-        /* Gradient orbs */
-        .gradient-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.2;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--pink), transparent 70%);
-            top: -10%;
-            right: 10%;
-            animation: orbFloat 20s ease-in-out infinite;
-        }
-
-        .orb-2 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--blue), transparent 70%);
-            bottom: -15%;
-            left: 5%;
-            animation: orbFloat 25s ease-in-out infinite reverse;
-        }
-
-        .orb-3 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--light-pink), transparent 70%);
-            top: 40%;
-            right: -10%;
-            animation: orbFloat 30s ease-in-out infinite;
-        }
-
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, -50px) scale(1.1); }
-        }
-
-        /* Content wrapper */
-        .wrapper {
+        .container {
             position: relative;
-            z-index: 10;
-        }
-
-        /* Header with glassmorphism */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 0;
-            backdrop-filter: blur(20px) saturate(180%);
-            background: rgba(10, 10, 18, 0.6);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        nav {
+            z-index: 1;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--pink), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .notify-btn {
-            padding: 0.7rem 1.8rem;
-            background: linear-gradient(135deg, var(--pink), var(--blue));
-            color: #ffffff;
-            border: none;
-            border-radius: 100px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 110, 199, 0.3);
-        }.notify-btn a{
-                        color: #ffffff;
-
-        }
-
-        .notify-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 110, 199, 0.5);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 80px 40px;
             text-align: center;
-            padding: 8rem 2rem 4rem;
-                        margin-top: 20px;
-
         }
 
-        .hero-content {
-            max-width: 900px;
+        .header {
+            margin-bottom: 12px;
         }
 
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 700;
+        h1 {
+            font-size: 5rem;
+            font-weight: 600;
+            letter-spacing: -2px;
             line-height: 1.1;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--light-pink), var(--pink), var(--blue), var(--light-blue));
-            background-size: 200% 200%;
+            background: linear-gradient(135deg, #3a86ff 0%, #ff006e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientShift 6s ease infinite;
+            margin-bottom: 0;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .hero-date {
-            font-size: 0.9rem;
-            font-weight: 500;
+        .date {
+            font-size: 1.5rem;
             color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
             font-weight: 400;
-            margin-bottom: 3rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            margin-bottom: 100px;
         }
 
-        /* Glassmorphic countdown */
         .countdown-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2.5rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px rgba(255, 110, 199, 0.1);
-        }
-
-        .countdown-label {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        .countdown {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .countdown-box {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2rem 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .countdown-box:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 110, 199, 0.3);
-            box-shadow: 0 4px 20px rgba(255, 110, 199, 0.2);
-        }
-
-        .countdown-number {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--pink), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .countdown-text {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 500;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 8rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--pink), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 5rem;
-            font-weight: 400;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .feature {
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 110, 199, 0.05), rgba(0, 212, 255, 0.05));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .feature:hover::before {
-            opacity: 1;
-        }
-
-        .feature:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 110, 199, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(255, 110, 199, 0.2);
-        }
-
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--pink), var(--blue));
-            border-radius: 14px;
             display: flex;
-            align-items: center;
+            gap: 40px;
             justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            margin: 80px 0;
+        }
+
+        .time-block {
             position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 15px rgba(255, 110, 199, 0.3);
         }
 
-        .feature h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            letter-spacing: -0.01em;
-            position: relative;
-            z-index: 1;
+        .time-number {
+            font-size: 7rem;
+            font-weight: 200;
+            letter-spacing: -4px;
+            line-height: 1;
+            color: #fff;
+            display: block;
+            font-variant-numeric: tabular-nums;
         }
 
-        .feature p {
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.7;
-            font-size: 0.95rem;
-            font-weight: 400;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Stats Preview */
-        .stats-preview {
-            padding: 8rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .stats-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 4rem 3rem;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(255, 110, 199, 0.1);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            padding: 1.5rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 110, 199, 0.3);
-            box-shadow: 0 4px 20px rgba(255, 110, 199, 0.2);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--pink), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 400;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 2rem 8rem;
-            text-align: center;
-        }
-
-        .cta-content {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 4rem 3rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            box-shadow: 0 8px 32px rgba(255, 110, 199, 0.15);
-        }
-
-        .cta-title {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--light-pink), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .cta-text {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1.1rem 3rem;
-            background: linear-gradient(135deg, var(--pink), var(--blue));
-            color: #ffffff;
-            border: none;
-            border-radius: 100px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 6px 20px rgba(255, 110, 199, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 35px rgba(255, 110, 199, 0.5);
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid var(--glass-border);
-        }
-
-        .footer-text {
+        .time-label {
+            font-size: 0.875rem;
             color: rgba(255, 255, 255, 0.4);
-            font-size: 0.85rem;
-            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+            margin-top: 12px;
+            display: block;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 0 1.5rem;
-            }
+        .divider {
+            width: 1px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            align-self: center;
+        }
 
-            .hero {
-                padding: 6rem 1.5rem 3rem;
-            }
+        .spacer {
+            height: 100px;
+        }
 
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .time-number {
+                font-size: 5rem;
+            }
+            
             .countdown-container {
-                padding: 2rem 1.5rem;
+                gap: 30px;
             }
+        }
 
-            .countdown {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 24px;
             }
-
-            .countdown-number {
+            
+            h1 {
                 font-size: 2.5rem;
+                letter-spacing: -1px;
             }
-
-            .features-grid {
-                grid-template-columns: 1fr;
+            
+            .date {
+                font-size: 1rem;
+                letter-spacing: 4px;
+                margin-bottom: 60px;
             }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+            
+            .countdown-container {
+                gap: 20px;
+                flex-wrap: wrap;
             }
-
-            .stats-container, .cta-content {
-                padding: 2.5rem 1.5rem;
+            
+            .time-number {
+                font-size: 4rem;
             }
-        }
-    @media(max-width: 420px){
-         .stats-grid {
-                 gap: .7rem !important;
-             }
-    }
-        /* Fade in animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+            
+            .divider {
+                display: none;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .time-block {
+                flex: 1;
+                min-width: 120px;
             }
         }
 
-        .hero-content {
-            animation: fadeIn 1s ease-out;
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .time-number {
+                font-size: 3rem;
+            }
+            
+            .countdown-container {
+                gap: 16px;
+            }
+            
+            .time-block {
+                min-width: 80px;
+            }
         }
-
-        .feature, .stat-item {
-            animation: fadeIn 0.8s ease-out backwards;
-        }
-
-        .feature:nth-child(1) { animation-delay: 0.1s; }
-        .feature:nth-child(2) { animation-delay: 0.2s; }
-        .feature:nth-child(3) { animation-delay: 0.3s; }
-        .feature:nth-child(4) { animation-delay: 0.4s; }
-        .feature:nth-child(5) { animation-delay: 0.5s; }
-        .feature:nth-child(6) { animation-delay: 0.6s; }
-      
     </style>
 </head>
 <body>
-    <!-- Background gradients -->
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-    <div class="gradient-orb orb-3"></div>
-
-    <!-- Floating particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Content -->
-    <div class="wrapper">
-        <!-- Header -->
-        <!-- <header>
-            <nav>
-                <div class="logo">PornWorship.com</div>
-                <button class="notify-btn"><a href="https:///x.com/pornworshipcom">Get Notified</a></button>
-            </nav>
-        </header> -->
-
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>The #1 <span class="gooning">Gooning platform in the world.</span></h1>
-                <div class="hero-date">January 1st, 2026</div>
-                <!-- <p class="hero-subtitle">Advanced Session Tracking.</p> -->
-                
-                <div class="countdown-container">
-                    <div class="countdown-label">Launch in</div>
-                    <div class="countdown">
-                        <div class="countdown-box">
-                            <div class="countdown-number" id="days">00</div>
-                            <div class="countdown-text">Days</div>
-                        </div>
-                        <div class="countdown-box">
-                            <div class="countdown-number" id="hours">00</div>
-                            <div class="countdown-text">Hours</div>
-                        </div>
-                        <div class="countdown-box">
-                            <div class="countdown-number" id="minutes">00</div>
-                            <div class="countdown-text">Minutes</div>
-                        </div>
-                        <div class="countdown-box">
-                            <div class="countdown-number" id="seconds">00</div>
-                            <div class="countdown-text">Seconds</div>
-                        </div>
-                    </div>
-                </div>
+    <div class="gradient-bg"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>The #1 Gooning<br>platform in the world</h1>
+        </div>
+        
+        <div class="date">January 1st 2026</div>
+        
+        <div class="countdown-container">
+            <div class="time-block">
+                <span class="time-number" id="days">00</span>
+                <span class="time-label">Days</span>
             </div>
-        </section>
-
+            <div class="divider"></div>
+            <div class="time-block">
+                <span class="time-number" id="hours">00</span>
+                <span class="time-label">Hours</span>
+            </div>
+            <div class="divider"></div>
+            <div class="time-block">
+                <span class="time-number" id="minutes">00</span>
+                <span class="time-label">Minutes</span>
+            </div>
+            <div class="divider"></div>
+            <div class="time-block">
+                <span class="time-number" id="seconds">00</span>
+                <span class="time-label">Seconds</span>
+            </div>
+        </div>
         
- 
- 
-
-        
+        <div class="spacer"></div>
     </div>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Z05S4889Y"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-4Z05S4889Y');
-    </script>
+        const targetDate = new Date('January 1, 2026 00:00:00').getTime();
 
-    <script>
-        // Create floating particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 30;
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+           
+            document.getElementById('days').textContent = String(days);
+            document.getElementById('hours').textContent = String(hours);
+            document.getElementById('minutes').textContent = String(minutes);
+            document.getElementById('seconds').textContent = String(seconds);
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                container.appendChild(particle);
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                clearInterval(countdownInterval);
             }
         }
 
-        // Countdown Timer
-        function updateCountdown() {
-            const launchDate = new Date('January 1, 2026 00:00:00').getTime();
-            const now = new Date().getTime();
-            const difference = launchDate - now;
-            
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        });
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
